@@ -42,7 +42,7 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link href="/contact" passHref>
+              <Link href="/project" passHref>
                 <p className="text-white block mt-4 md:inline-block md:mt-0">
                   Projects
                 </p>
