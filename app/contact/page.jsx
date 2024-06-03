@@ -3,18 +3,18 @@ import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
 
 const ContactPage = () => {
-  const form = useRef;
-
+  const form = useRef(null);
+  console.log(process.env.NEXT_PUBLIC_SERVICE_ID);
   const sendEmail = (e) => {
     e.preventDefault();
 
     emailjs
       .sendForm(
-        process.env.YOUR_SERVICE_ID,
-        process.env.YOUR_TEMPLATE_ID,
+        process.env.NEXT_PUBLIC_SERVICE_ID,
+        process.env.NEXT_PUBLIC_TEMPLATE_ID,
         form.current,
         {
-          publicKey: process.env.YOUR_PUBLIC_KEY,
+          publicKey: process.env.NEXT_PUBLIC_PUBLIC_KEY,
         }
       )
       .then(
@@ -34,6 +34,7 @@ const ContactPage = () => {
           <h1 className="text-white">For Inquiry</h1>
           <form
             onSubmit={sendEmail}
+            ref={form}
             className="flex flex-col gap-4  text-black"
           >
             <input
