@@ -3,7 +3,7 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <div className=" flex justify-between  bg-[#0E1630] h-[75vh] text-white w-[81%] mx-auto">
+    <div className=" flex flex-col lg:flex-row sm:order-1 justify-between  bg-[#0E1630] h-[75vh] text-white w-[81%] mx-auto">
       <div className="mt-[100px] flex flex-col gap-6 w-1/2 ">
         <h1 className="text-2xl"> Hello</h1>
         <h2 className="text-3xl">I&apos;m Bivek Yadav</h2>
@@ -20,7 +20,7 @@ const Hero = () => {
           <p>Connect with me</p>
         </div>
       </div>
-      <div className="w-[500px] mt-[80px] mr-[100px]">
+      <div className="w-[500px] mt-[80px] mr-[100px] sm:order-2">
         <Image
           className="rounded-[50%]"
           src={"/profile.jpg"}
