@@ -4,9 +4,6 @@ import emailjs from "@emailjs/browser";
 
 const ContactPage = () => {
   const form = useRef(null);
-  console.log("Service ID:", process.env.NEXT_PUBLIC_SERVICE_ID);
-  console.log("Template ID:", process.env.NEXT_PUBLIC_TEMPLATE_ID);
-  console.log("Public Key:", process.env.NEXT_PUBLIC_PUBLIC_KEY);
 
   emailjs.init(process.env.NEXT_PUBLIC_PUBLIC_KEY);
   const sendEmail = (e) => {
