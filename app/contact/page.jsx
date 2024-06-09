@@ -4,7 +4,11 @@ import emailjs from "@emailjs/browser";
 
 const ContactPage = () => {
   const form = useRef(null);
-  console.log(process.env.NEXT_PUBLIC_SERVICE_ID);
+  console.log("Service ID:", process.env.NEXT_PUBLIC_SERVICE_ID);
+  console.log("Template ID:", process.env.NEXT_PUBLIC_TEMPLATE_ID);
+  console.log("Public Key:", process.env.NEXT_PUBLIC_PUBLIC_KEY);
+
+  emailjs.init(process.env.NEXT_PUBLIC_PUBLIC_KEY);
   const sendEmail = (e) => {
     e.preventDefault();
 
@@ -28,8 +32,8 @@ const ContactPage = () => {
   };
   return (
     <div className="min-h-screen text-white w-[81%] mx-auto">
-      <h1>Contact me</h1>
-      <div className="flex flex-col gap-10  lg:flex-row  ">
+      <h1 className="text-3xl ">Contact me</h1>
+      <div className="flex flex-col gap-10  lg:flex-row pt-10 ">
         <div className="flex flex-col gap-4 flex-1 text-black">
           <h1 className="text-white">For Inquiry</h1>
           <form
