@@ -74,7 +74,7 @@ const ContactPage = () => {
         <div className="flex-1">
           <h1>Contact Details</h1>
           <label htmlFor="">Email</label>
-          <p>yadavbivek@gmail.com</p>
+          <p>yadavbivek08@gmail.com</p>
         </div>
       </div>
     </div>

@@ -1,10 +1,17 @@
 export const project = [
+  // {
+  //   id: 1,
+  //   name: "Weather App",
+  //   photo: "/weather1.png",
+  //   codeUrl: "https://github.com/imbivek08/weather-app",
+  //   liveUrl: "https://weather-app-henna-kappa.vercel.app/",
+  // },
   {
     id: 1,
-    name: "Weather App",
-    photo: "/weather1.png",
-    codeUrl: "https://github.com/imbivek08/weather-app",
-    liveUrl: "https://weather-app-henna-kappa.vercel.app/",
+    name: "Blog App",
+    photo: "/image.png",
+    codeUrl: "https://github.com/imbivek08/PostPulse",
+    liveUrl: "https://showcase-3vbg.onrender.com/",
   },
   {
     id: 2,

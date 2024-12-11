@@ -1,7 +1,6 @@
 import Hero from "@/components/Hero";
-import Image from "next/image";
 import React from "react";
-
+import { Button } from "flowbite-react";
 const AboutPage = () => {
   return (
     <div className="min-h-screen ">
