@@ -1,80 +1,115 @@
 "use client";
-import React, { useRef } from "react";
-import emailjs from "@emailjs/browser";
+import React from "react";
+import { FaEnvelope, FaGithub, FaLinkedin, FaMapMarkerAlt, FaPaperPlane } from "react-icons/fa";
+import Link from "next/link";
 
 const ContactPage = () => {
-  const form = useRef(null);
+  const contactDetails = [
+    { 
+      icon: FaEnvelope, 
+      label: "Email", 
+      value: "yadavbivek08@gmail.com",
+      link: "mailto:yadavbivek08@gmail.com",
+      color: "from-red-500 to-pink-500"
+    },
+    { 
+      icon: FaGithub, 
+      label: "GitHub", 
+      value: "@imbivek08",
+      link: "https://github.com/imbivek08",
+      color: "from-gray-500 to-gray-700"
+    },
+    { 
+      icon: FaLinkedin, 
+      label: "LinkedIn", 
+      value: "Bivek Yadav",
+      link: "https://linkedin.com",
+      color: "from-blue-500 to-blue-700"
+    },
+  ];
 
-  emailjs.init(process.env.NEXT_PUBLIC_PUBLIC_KEY);
-  const sendEmail = (e) => {
-    e.preventDefault();
-
-    emailjs
-      .sendForm(
-        process.env.NEXT_PUBLIC_SERVICE_ID,
-        process.env.NEXT_PUBLIC_TEMPLATE_ID,
-        form.current,
-        {
-          publicKey: process.env.NEXT_PUBLIC_PUBLIC_KEY,
-        }
-      )
-      .then(
-        () => {
-          console.log("SUCCESS!");
-        },
-        (error) => {
-          console.log("FAILED...", error.text);
-        }
-      );
-  };
   return (
-    <div className="min-h-screen text-white w-[81%] mx-auto">
-      <h1 className="text-3xl ">Contact me</h1>
-      <div className="flex flex-col gap-10  lg:flex-row pt-10 ">
-        <div className="flex flex-col gap-4 flex-1 text-black">
-          <h1 className="text-white">For Inquiry</h1>
-          <form
-            onSubmit={sendEmail}
-            ref={form}
-            className="flex flex-col gap-4  text-black"
-          >
-            <input
-              type="text"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Your name"
-              required
-              name="from_name"
-            />
-            <input
-              type="text"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Email"
-              name="email"
-              required
-            />
-            <input
-              type="text"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Phone/WhatsApp"
-              required
-              name="phone"
-            />
-            <textarea
-              id="message"
-              rows="4"
-              name="message"
-              className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Write your thoughts here..."
-            ></textarea>
-            <button className="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-              Submit
-            </button>
-          </form>
+    <div className="relative min-h-screen text-white w-full lg:w-[85%] xl:w-[80%] mx-auto px-4 lg:px-0 py-16 lg:py-24">
+      {/* Background decorations */}
+      <div className="absolute top-20 left-10 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 right-10 w-72 h-72 bg-purple-500/5 rounded-full blur-3xl"></div>
+      
+      <div className="relative max-w-5xl mx-auto">
+        <div className="text-center mb-12 lg:mb-16">
+          <span className="text-blue-400 font-semibold tracking-wider uppercase text-sm">📬 Get In Touch</span>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mt-3 mb-4">
+            Let&apos;s{" "}
+            <span className="gradient-text">Connect</span>
+          </h1>
+          <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+            I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out!
+          </p>
         </div>
-        <div className="flex-1">
-          <h1>Contact Details</h1>
-          <label htmlFor="">Email</label>
-          <p>yadavbivek08@gmail.com</p>
+        
+        {/* Contact Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {contactDetails.map((contact, index) => {
+            const IconComponent = contact.icon;
+            return (
+              <Link 
+                key={index}
+                href={contact.link} 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group"
+              >
+                <div className="relative glass-effect rounded-2xl p-6 hover:scale-105 transition-all duration-500 overflow-hidden group-hover:shadow-2xl group-hover:shadow-blue-500/20">
+                  {/* Gradient background on hover */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${contact.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+                  
+                  <div className="relative flex flex-col items-center text-center gap-4">
+                    <div className={`p-4 rounded-xl bg-gradient-to-br ${contact.color} bg-opacity-10 group-hover:scale-110 transition-transform duration-300`}>
+                      <IconComponent size={32} className="text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold mb-2 text-white">{contact.label}</h3>
+                      <p className="text-sm text-gray-400 group-hover:text-white transition-colors break-all">{contact.value}</p>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* CTA Section */}
+        <div className="relative glass-effect rounded-3xl p-8 sm:p-12 text-center overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-purple-600/10 to-pink-600/10"></div>
+          
+          <div className="relative z-10">
+            <div className="inline-block p-4 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl mb-6">
+              <FaPaperPlane size={32} className="text-white" />
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
+              Ready to{" "}
+              <span className="gradient-text">Collaborate?</span>
+            </h2>
+            <p className="text-gray-400 text-sm sm:text-base mb-8 max-w-xl mx-auto">
+              Whether you have a project in mind or just want to chat about technology, I&apos;d love to hear from you!
+            </p>
+            <Link 
+              href="mailto:yadavbivek08@gmail.com"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full font-semibold hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/50"
+            >
+              <FaEnvelope size={20} />
+              Send me an Email
+            </Link>
+          </div>
+        </div>
+
+        {/* Social Links Bar */}
+        <div className="mt-12 flex justify-center gap-4">
+          <Link href="https://github.com/imbivek08" target="_blank" className="p-4 glass-effect rounded-xl hover:scale-110 transition-all duration-300 glow-blue">
+            <FaGithub size={24} />
+          </Link>
+          <Link href="https://linkedin.com" target="_blank" className="p-4 glass-effect rounded-xl hover:scale-110 transition-all duration-300 glow-blue">
+            <FaLinkedin size={24} />
+          </Link>
         </div>
       </div>
     </div>
