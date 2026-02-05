@@ -27,17 +27,15 @@ const Hero = () => {
               </span>
             </h1>
             <h2 className="text-xl sm:text-2xl lg:text-3xl text-gray-300 font-light">
-              Fullstack Developer & DevOps Engineer
+              Fullstack Engineer
             </h2>
           </div>
           
           <p className="text-gray-400 text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl">
-            Crafting scalable web applications with the{" "}
-            <span className="text-green-400 font-semibold">MERN stack</span>. 
-            Passionate about{" "}
-            <span className="text-blue-400 font-semibold">cloud technologies</span>,{" "}
-            <span className="text-purple-400 font-semibold">containerization</span>, and 
-            building robust CI/CD pipelines.
+            Full-stack developer with a strong DevOps skill. I build scalable APIs, 
+            cloud-native systems, and production-ready infrastructure using TypeScript, Go, React, 
+            Docker, Kubernetes, and AWS. I care about clean code, smooth deployments, 
+            and systems that actually work in the real world.
           </p>
           
           <div className="flex flex-wrap gap-4 pt-4">

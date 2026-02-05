@@ -11,11 +11,13 @@ import { FaAws } from "react-icons/fa";
 import { FcLinux } from "react-icons/fc";
 import { SiTailwindcss } from "react-icons/si";
 import { DiPostgresql } from "react-icons/di";
+import { SiGo } from "react-icons/si";
 
 const Skills = () => {
   const skillsData = [
     { name: "Node.js", icon: RiNodejsLine, color: "#68A063", level: 90, category: "Backend" },
     { name: "Express", icon: SiExpress, color: "#ffffff", level: 85, category: "Backend" },
+    { name: "Go", icon: SiGo, color: "#00ADD8", level: 80, category: "Backend" },
     { name: "React", icon: FaReact, color: "#61DAFB", level: 92, category: "Frontend" },
     { name: "Next.js", icon: SiNextdotjs, color: "#ffffff", level: 88, category: "Frontend" },
     { name: "MongoDB", icon: DiMongodb, color: "#13AA52", level: 85, category: "Database" },
