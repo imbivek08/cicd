@@ -12,12 +12,12 @@ const Projects = () => {
       
       <div className="relative">
         <div className="text-center mb-12 lg:mb-16">
-          <span className="text-blue-400 font-semibold tracking-wider uppercase text-sm">🚀 Portfolio</span>
+          <span className="text-[#7ee787] font-semibold tracking-wider uppercase text-sm">$ ls ./projects</span>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mt-3 mb-4">
             Featured{" "}
             <span className="gradient-text">Projects</span>
           </h1>
-          <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">
+          <p className="text-[#8b949e] text-sm sm:text-base max-w-2xl mx-auto">
             Here are some of my recent projects showcasing my skills in full-stack development
           </p>
         </div>

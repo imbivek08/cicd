@@ -37,12 +37,12 @@ const Skills = () => {
       
       <div className="relative">
         <div className="text-center mb-12 lg:mb-16">
-          <span className="text-blue-400 font-semibold tracking-wider uppercase text-sm">🛠️ Tech Stack</span>
+          <span className="text-[#7ee787] font-semibold tracking-wider uppercase text-sm">$ command -v skills</span>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mt-3 mb-4">
             Skills &{" "}
             <span className="gradient-text">Technologies</span>
           </h1>
-          <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">
+          <p className="text-[#8b949e] text-sm sm:text-base max-w-2xl mx-auto">
             Building modern applications with cutting-edge technologies
           </p>
         </div>
@@ -53,7 +53,7 @@ const Skills = () => {
             return (
               <div 
                 key={index}
-                className="group relative glass-effect rounded-2xl p-4 sm:p-6 hover:scale-105 transition-all duration-500 hover:shadow-xl hover:shadow-blue-500/10"
+                className="group relative glass-effect rounded-lg p-4 sm:p-6 hover:-translate-y-1 transition-all duration-500 hover:shadow-xl hover:shadow-green-500/10"
                 style={{ animationDelay: `${index * 50}ms` }}
               >
                 {/* Hover glow effect */}
@@ -69,12 +69,12 @@ const Skills = () => {
                   </div>
                   <div className="text-center w-full">
                     <p className="text-xs sm:text-sm font-bold text-white mb-1">{skill.name}</p>
-                    <span className="text-xs text-gray-500 font-medium">{skill.category}</span>
+                    <span className="text-xs text-[#8b949e] font-medium">{skill.category}</span>
                     
                     {/* Progress bar */}
-                    <div className="mt-2 w-full bg-gray-800 rounded-full h-1.5 overflow-hidden">
+                    <div className="mt-2 w-full bg-[#21262d] rounded-full h-1.5 overflow-hidden">
                       <div 
-                        className="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transition-all duration-1000 ease-out group-hover:shadow-lg"
+                        className="h-full bg-[#7ee787] rounded-full transition-all duration-1000 ease-out group-hover:shadow-lg"
                         style={{ 
                           width: `${skill.level}%`,
                           transitionDelay: `${index * 50}ms`

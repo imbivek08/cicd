@@ -8,8 +8,11 @@
   }
   
   body {
-    @apply bg-gradient-to-br from-[#0A0E27] via-[#0E1630] to-[#1a1f3a];
-    @apply text-white antialiased;
+    @apply bg-[#090b0f] text-[#d7e0d5] antialiased;
+    font-family: "Courier New", Courier, monospace;
+    background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+    background-size: 32px 32px;
   }
 }
 
@@ -27,20 +30,51 @@
   }
   
   .gradient-text {
-    @apply bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent;
+    @apply text-[#7ee787];
   }
   
   .glass-effect {
-    @apply bg-white/5 backdrop-blur-lg border border-white/10;
+    @apply bg-[#0d1117]/90 border border-[#30363d] shadow-[0_12px_40px_rgba(0,0,0,.25)];
   }
   
   .glow-blue {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 20px rgba(126, 231, 135, 0.2);
   }
   
   .glow-purple {
-    box-shadow: 0 0 20px rgba(147, 51, 234, 0.5);
+    box-shadow: 0 0 20px rgba(255, 166, 87, 0.2);
   }
+}
+
+.terminal-window {
+  @apply glass-effect rounded-lg overflow-hidden;
+}
+
+.terminal-titlebar {
+  @apply flex items-center gap-2 px-4 py-3 bg-[#161b22] border-b border-[#30363d] text-xs text-[#8b949e];
+}
+
+.terminal-dot {
+  @apply h-3 w-3 rounded-full;
+}
+
+.prompt {
+  @apply text-[#7ee787];
+}
+
+.command {
+  @apply text-[#79c0ff];
+}
+
+.terminal-cursor::after {
+  content: "";
+  display: inline-block;
+  width: .55em;
+  height: 1em;
+  margin-left: .25em;
+  vertical-align: -.15em;
+  background: #7ee787;
+  animation: blink 1s steps(2, start) infinite;
 }
 
 @keyframes float {
@@ -66,6 +100,10 @@
 @keyframes fadeIn {
   from {
     opacity: 0;
+  }
+
+  @keyframes blink {
+    50% { opacity: 0; }
   }
   to {
     opacity: 1;
