@@ -5,7 +5,6 @@ export const project = [
     name: "eDokan",
     photo: "/eDokan.png",
     codeUrl: "https://github.com/imbivek08/online-pasal",
-    liveUrl: "#",
   },
   {
     id: 2,
@@ -16,9 +15,8 @@ export const project = [
   },
   {
     id: 3,
-    name: "Ecommerce",
-    photo: "/ecommerce.png",
-    codeUrl: "https://github.com/imbivek08/e-commerce",
-    liveUrl: "https://ecommerceapp-iota.vercel.app/",
+    name: "End to End DevOps",
+    photo: "/image.png",
+    codeUrl: "https://github.com/imbivek08/infra-e2e-devops",
   },
 ];
