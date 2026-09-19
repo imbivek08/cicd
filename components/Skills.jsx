@@ -15,73 +15,77 @@ import { SiGo } from "react-icons/si";
 
 const Skills = () => {
   const skillsData = [
-    { name: "Node.js", icon: RiNodejsLine, color: "#68A063", level: 90, category: "Backend" },
-    { name: "Express", icon: SiExpress, color: "#ffffff", level: 85, category: "Backend" },
-    { name: "Go", icon: SiGo, color: "#00ADD8", level: 80, category: "Backend" },
-    { name: "React", icon: FaReact, color: "#61DAFB", level: 92, category: "Frontend" },
-    { name: "Next.js", icon: SiNextdotjs, color: "#ffffff", level: 88, category: "Frontend" },
-    { name: "MongoDB", icon: DiMongodb, color: "#13AA52", level: 85, category: "Database" },
-    { name: "PostgreSQL", icon: DiPostgresql, color: "#336791", level: 80, category: "Database" },
-    { name: "Docker", icon: FaDocker, color: "#2496ED", level: 87, category: "DevOps" },
-    { name: "Kubernetes", icon: SiKubernetes, color: "#326CE5", level: 75, category: "DevOps" },
-    { name: "AWS", icon: FaAws, color: "#FF9900", level: 78, category: "DevOps" },
-    { name: "Git", icon: FaGitAlt, color: "#F64D27", level: 90, category: "Tools" },
-    { name: "Linux", icon: FcLinux, color: "#FCC624", level: 82, category: "Tools" },
-    { name: "Tailwind", icon: SiTailwindcss, color: "#06B6D4", level: 93, category: "Frontend" },
+    { name: "Node.js", icon: RiNodejsLine, color: "#68A063", category: "Backend" },
+    { name: "Express", icon: SiExpress, color: "#ffffff", category: "Backend" },
+    { name: "Go", icon: SiGo, color: "#00ADD8", category: "Backend" },
+    { name: "React", icon: FaReact, color: "#61DAFB", category: "Frontend" },
+    { name: "Next.js", icon: SiNextdotjs, color: "#ffffff", category: "Frontend" },
+    { name: "Tailwind", icon: SiTailwindcss, color: "#06B6D4", category: "Frontend" },
+    { name: "MongoDB", icon: DiMongodb, color: "#13AA52", category: "Database" },
+    { name: "PostgreSQL", icon: DiPostgresql, color: "#336791", category: "Database" },
+    { name: "Docker", icon: FaDocker, color: "#2496ED", category: "DevOps" },
+    { name: "Kubernetes", icon: SiKubernetes, color: "#326CE5", category: "DevOps" },
+    { name: "AWS", icon: FaAws, color: "#FF9900", category: "DevOps" },
+    { name: "Git", icon: FaGitAlt, color: "#F64D27", category: "Tools" },
+    { name: "Linux", icon: FcLinux, color: "#FCC624", category: "Tools" },
   ];
+
+  const categories = ["Frontend", "Backend", "Database", "DevOps", "Tools"];
 
   return (
     <div id="skills" className="relative text-white mx-auto w-full lg:w-[85%] xl:w-[80%] px-4 lg:px-0 py-16 lg:py-24">
-      {/* Background decoration */}
       <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl"></div>
-      
+
       <div className="relative">
         <div className="text-center mb-12 lg:mb-16">
           <span className="text-[#7ee787] font-semibold tracking-wider uppercase text-sm">$ command -v skills</span>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mt-3 mb-4">
-            Skills &{" "}
-            <span className="gradient-text">Technologies</span>
+            Skills & <span className="gradient-text">Technologies</span>
           </h1>
           <p className="text-[#8b949e] text-sm sm:text-base max-w-2xl mx-auto">
-            Building modern applications with cutting-edge technologies
+            I build with modern tooling across frontend, backend, databases, and cloud infrastructure.
           </p>
         </div>
-        
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-4 lg:gap-6">
-          {skillsData.map((skill, index) => {
-            const IconComponent = skill.icon;
+
+        <div className="space-y-8 lg:space-y-10">
+          {categories.map((category) => {
+            const categorySkills = skillsData.filter((skill) => skill.category === category);
+
             return (
-              <div 
-                key={index}
-                className="group relative glass-effect rounded-lg p-4 sm:p-6 hover:-translate-y-1 transition-all duration-500 hover:shadow-xl hover:shadow-green-500/10"
-                style={{ animationDelay: `${index * 50}ms` }}
-              >
-                {/* Hover glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/0 to-purple-600/0 group-hover:from-blue-600/10 group-hover:to-purple-600/10 rounded-2xl transition-all duration-500"></div>
-                
-                <div className="relative flex flex-col items-center gap-3">
-                  <div className="p-3 rounded-xl bg-gradient-to-br from-blue-600/10 to-purple-600/10 group-hover:scale-110 transition-transform duration-300">
-                    <IconComponent 
-                      size={36} 
-                      color={skill.color} 
-                      className="group-hover:drop-shadow-lg transition-all duration-300"
-                    />
-                  </div>
-                  <div className="text-center w-full">
-                    <p className="text-xs sm:text-sm font-bold text-white mb-1">{skill.name}</p>
-                    <span className="text-xs text-[#8b949e] font-medium">{skill.category}</span>
-                    
-                    {/* Progress bar */}
-                    <div className="mt-2 w-full bg-[#21262d] rounded-full h-1.5 overflow-hidden">
-                      <div 
-                        className="h-full bg-[#7ee787] rounded-full transition-all duration-1000 ease-out group-hover:shadow-lg"
-                        style={{ 
-                          width: `${skill.level}%`,
-                          transitionDelay: `${index * 50}ms`
-                        }}
-                      ></div>
-                    </div>
-                  </div>
+              <div key={category} className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <span className="inline-block h-px flex-1 bg-[#30363d]"></span>
+                  <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-[#7ee787]">
+                    {category}
+                  </p>
+                  <span className="inline-block h-px flex-1 bg-[#30363d]"></span>
+                </div>
+
+                <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-4 lg:gap-5">
+                  {categorySkills.map((skill, index) => {
+                    const IconComponent = skill.icon;
+
+                    return (
+                      <div
+                        key={`${category}-${skill.name}`}
+                        className="group relative overflow-hidden rounded-xl border border-[#30363d] bg-[#0d1117]/70 p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[#7ee787]/60 hover:shadow-xl hover:shadow-green-500/5"
+                        style={{ animationDelay: `${index * 60}ms` }}
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/0 via-purple-600/0 to-pink-600/0 group-hover:from-blue-600/10 group-hover:via-purple-600/10 group-hover:to-pink-600/10 transition-all duration-500"></div>
+
+                        <div className="relative flex items-center gap-3">
+                          <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-[#30363d] bg-[#161b22]">
+                            <IconComponent size={22} color={skill.color} />
+                          </div>
+
+                          <div className="min-w-0">
+                            <p className="text-sm font-semibold text-white">{skill.name}</p>
+                            <p className="text-[10px] uppercase tracking-[0.15em] text-[#8b949e]">{skill.category}</p>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             );
