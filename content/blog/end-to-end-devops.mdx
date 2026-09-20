@@ -19,78 +19,79 @@ The basic idea was:
 
 ```text
 Code → Test → Build → Infrastructure → Deploy → Monitor → Recover
+```
 
-1. Starting with the application
+## 1. Starting with the application
 
 I started with a simple application that could act as the workload for the infrastructure.
 
-The goal wasn't to build an extremely complicated application.
+The goal wasn't to build an extremely complicated application. I needed something realistic enough to have:
 
-I needed something realistic enough to have:
-
-A backend
-A database
-Environment configuration
-A container
-Deployable services
-Health checks
+- A backend
+- A database
+- Environment configuration
+- A container
+- Deployable services
+- Health checks
 
 This allowed me to focus on the infrastructure and deployment problems instead of spending all my time building application features.
 
-2. Containerizing the application
+## 2. Containerizing the application
 
-The first major step was Docker.
-
-I wanted the application to run consistently regardless of where it was deployed.
+The first major step was Docker. I wanted the application to run consistently regardless of where it was deployed.
 
 Instead of depending on my local development environment, I created a Docker image containing everything required to run the application.
 
 The workflow became:
 
+```text
 Source Code
-     ↓
+    ↓
 Dockerfile
-     ↓
+    ↓
 Docker Image
-     ↓
+    ↓
 Container
+```
 
 I also focused on things like smaller production images, health checks, and running the application with appropriate permissions.
 
 This gave me a consistent artifact that could move through the rest of the deployment pipeline.
 
-3. Building the CI pipeline
+## 3. Building the CI pipeline
 
 Once the application could be containerized, I automated the build process using GitHub Actions.
 
 A push to the repository could trigger the pipeline and perform tasks such as:
 
-Running tests
-Running linting
-Performing security checks
-Building the Docker image
-Scanning the image
-Publishing the image
+- Running tests
+- Running linting
+- Performing security checks
+- Building the Docker image
+- Scanning the image
+- Publishing the image
 
 The basic flow looked like:
 
+```text
 Git Push
-   ↓
+    ↓
 GitHub Actions
-   ↓
+    ↓
 Tests
-   ↓
+    ↓
 Security Checks
-   ↓
+    ↓
 Docker Build
-   ↓
+    ↓
 Image Scan
-   ↓
+    ↓
 Container Registry
+```
 
 This was my first major step toward removing manual work from the deployment process.
 
-4. Infrastructure as Code with Terraform
+## 4. Infrastructure as Code with Terraform
 
 After automating the application build, I wanted to automate the infrastructure itself.
 
@@ -100,17 +101,18 @@ Instead of manually creating resources through the AWS console, I defined the in
 
 The infrastructure included things such as:
 
-VPC
-Subnets
-Networking
-IAM
-Security groups
-ECR
-Kubernetes infrastructure
-Supporting AWS resources
+- VPC
+- Subnets
+- Networking
+- IAM
+- Security groups
+- ECR
+- Kubernetes infrastructure
+- Supporting AWS resources
 
 The idea was simple:
 
+```text
 Terraform Code
       ↓
 Terraform Plan
@@ -118,148 +120,140 @@ Terraform Plan
 Terraform Apply
       ↓
 AWS Infrastructure
+```
 
-This changed the way I thought about infrastructure.
+This changed the way I thought about infrastructure. It wasn't something that had to be manually configured once. It became something that could be:
 
-It wasn't something that had to be manually configured once.
+- Version controlled
+- Reviewed
+- Recreated
+- Modified
+- Automated
 
-It became something that could be:
-
-Version controlled
-Reviewed
-Recreated
-Modified
-Automated
-5. Deploying with Kubernetes
+## 5. Deploying with Kubernetes
 
 Once the infrastructure was ready, Kubernetes became responsible for running the application.
 
 I created Kubernetes resources for the application and configured things such as:
 
-Deployments
-Services
-ConfigMaps
-Secrets
-Health probes
-Resource limits
-Autoscaling
+- Deployments
+- Services
+- ConfigMaps
+- Secrets
+- Health probes
+- Resource limits
+- Autoscaling
 
 One important lesson here was that running a container is not the same thing as running a healthy application.
 
-For example, a container may still be running while the application inside it is unable to serve requests.
+For example, a container may still be running while the application inside it is unable to serve requests. Health checks allow Kubernetes to understand the actual state of the application.
 
-Health checks allow Kubernetes to understand the actual state of the application.
-
+```text
 Application
-     ↓
+    ↓
 Health Check
-     ↓
+    ↓
 Kubernetes
-     ↓
+    ↓
 Healthy?
-   /     \
- Yes      No
-  ↓        ↓
-Traffic   Recovery
-6. GitOps with Argo CD
+  ↙     ↘
+Yes      No
+ ↓        ↓
+Traffic  Recovery
+```
 
-At this point, I had automated infrastructure provisioning and application builds.
+## 6. GitOps with Argo CD
 
-The next problem was deployment.
+At this point, I had automated infrastructure provisioning and application builds. The next problem was deployment.
 
-I didn't want to manually run Kubernetes commands every time a new version was available.
-
-So I introduced GitOps using Argo CD.
+I didn't want to manually run Kubernetes commands every time a new version was available, so I introduced GitOps using Argo CD.
 
 The desired Kubernetes state was stored in Git, and Argo CD continuously monitored it.
 
 The deployment flow became:
 
+```text
 Code Change
-     ↓
+    ↓
 GitHub Actions
-     ↓
+    ↓
 Build & Test
-     ↓
+    ↓
 Container Image
-     ↓
+    ↓
 Update Deployment Configuration
-     ↓
+    ↓
 Git Repository
-     ↓
+    ↓
 Argo CD
-     ↓
+    ↓
 Kubernetes
+```
 
 Git effectively became the source of truth for the desired state of the application.
 
 This was one of the most interesting parts of the project because the deployment process became much more predictable.
 
-7. Monitoring with Prometheus and Grafana
+## 7. Monitoring with Prometheus and Grafana
 
-Deploying an application is only part of the problem.
-
-Once something is running, I need to know what is happening inside the system.
+Deploying an application is only part of the problem. Once something is running, I need to know what is happening inside the system.
 
 For monitoring, I used Prometheus and Grafana.
 
 The monitoring setup allowed me to observe things such as:
 
-CPU usage
-Memory usage
-Kubernetes workloads
-Application health
-Resource utilization
-System behavior over time
+- CPU usage
+- Memory usage
+- Kubernetes workloads
+- Application health
+- Resource utilization
+- System behavior over time
 
 The basic idea was:
 
+```text
 Application
-     ↓
+    ↓
 Metrics
-     ↓
+    ↓
 Prometheus
-     ↓
+    ↓
 Grafana
-     ↓
+    ↓
 Dashboards
+```
 
-This also changed how I approached debugging.
+This also changed how I approached debugging. Instead of guessing what was wrong, I could start looking at actual system data.
 
-Instead of guessing what was wrong, I could start looking at actual system data.
-
-8. Security throughout the pipeline
+## 8. Security throughout the pipeline
 
 I also wanted security to be part of the development and deployment process instead of treating it as a final step.
 
 Some of the areas I worked with included:
 
-IAM permissions
-Kubernetes RBAC
-Non-root containers
-Secrets
-Container image scanning
-Network security
-Least-privilege access
+- IAM permissions
+- Kubernetes RBAC
+- Non-root containers
+- Secrets management
+- Container image scanning
+- Network security
+- Least-privilege access
 
-The goal wasn't to claim that the system was perfectly secure.
+The goal wasn't to claim that the system was perfectly secure. The goal was to understand how security considerations fit into an automated infrastructure.
 
-The goal was to understand how security considerations fit into an automated infrastructure.
-
-9. Testing what happens when things break
+## 9. Testing what happens when things break
 
 One of the most valuable parts of this project was intentionally testing failures.
 
-It's easy to demonstrate a system when everything works.
+It's easy to demonstrate a system when everything works. The more interesting question is:
 
-The more interesting question is:
-
-What happens when something fails?
+> What happens when something fails?
 
 I experimented with scenarios such as unhealthy workloads and pod failures to understand how Kubernetes responded.
 
 For example:
 
+```text
 Application Failure
         ↓
 Health Check Fails
@@ -269,78 +263,74 @@ Kubernetes Detects Problem
 Unhealthy Pod Replaced
         ↓
 Application Recovers
+```
 
-This helped me understand an important difference between deployment automation and reliability engineering.
+This helped me understand an important difference between deployment automation and reliability engineering:
 
-Automation gets the software deployed.
+- Automation gets the software deployed.
+- Reliability is about what happens after something goes wrong.
 
-Reliability is about what happens after something goes wrong.
+## What I learned
 
-What I learned
-
-The biggest lesson from this project wasn't a specific tool.
-
-It was understanding how all of these tools fit together.
+The biggest lesson from this project wasn't a specific tool. It was understanding how all of these tools fit together.
 
 Before building this project, I mostly thought about DevOps technologies individually:
 
-Docker
-Terraform
-Kubernetes
-AWS
-GitHub Actions
-Argo CD
-Prometheus
-Grafana
+- Docker
+- Terraform
+- Kubernetes
+- AWS
+- GitHub Actions
+- Argo CD
+- Prometheus
+- Grafana
 
 After building it, I started thinking about the complete lifecycle:
 
+```text
 Code
- ↓
+  ↓
 Test
- ↓
+  ↓
 Build
- ↓
+  ↓
 Scan
- ↓
+  ↓
 Package
- ↓
+  ↓
 Provision
- ↓
+  ↓
 Deploy
- ↓
+  ↓
 Observe
- ↓
+  ↓
 Scale
- ↓
+  ↓
 Recover
+```
 
-Each component has a purpose.
+Each component has a purpose. The real value comes from connecting them together.
 
-The real value comes from connecting them together.
-
-What I would improve
+## What I would improve
 
 This project is far from perfect, and that's actually one of the reasons I wanted to document it.
 
 There are several areas I would improve in a future version:
 
-More advanced deployment strategies
-Better disaster recovery
-Automated database backup and restore testing
-More comprehensive load testing
-Better alerting
-More advanced security policies
-Infrastructure cost optimization
-More failure and chaos testing
+- More advanced deployment strategies
+- Better disaster recovery
+- Automated database backup and restore testing
+- More comprehensive load testing
+- Better alerting
+- More advanced security policies
+- Infrastructure cost optimization
+- More failure and chaos testing
 
 There is always another layer to learn.
 
-Final thoughts
+## Final thoughts
 
-This project started as a way for me to learn DevOps.
-
-But while building it, I realized that DevOps is not really about learning a list of tools.
+This project started as a way for me to learn DevOps. But while building it, I realized that DevOps is not really about learning a list of tools.
 
 It's about understanding how software moves from an idea on a developer's machine to a system that can actually run, scale, be monitored, and recover from failures.
 
@@ -350,4 +340,4 @@ And this is only one step in that journey.
 
 I'll continue documenting what I build, what breaks, what I learn, and how I improve it.
 
-Build → Break → Understand → Improve.
+> Build → Break → Understand → Improve.
