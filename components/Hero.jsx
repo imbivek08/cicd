@@ -113,7 +113,7 @@ const Hero = () => {
               <div className="absolute inset-0 rounded-full overflow-hidden border-4 border-white/10">
                 <Image
                   className="object-cover hover:scale-110 transition-transform duration-500"
-                  src="/profile.jpg"
+                  src="/Profile.jpeg"
                   fill
                   alt="Bivek Yadav"
                   priority

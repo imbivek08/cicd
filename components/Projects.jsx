@@ -22,9 +22,16 @@ const Projects = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {project.map((item) => {
-            return <ProjectCard key={item.id} props={item} />;
+        <div className="mx-auto max-w-6xl">
+          {project.map((item, index) => {
+            return (
+              <ProjectCard
+                key={item.id}
+                props={item}
+                index={index}
+                featured={index === 0}
+              />
+            );
           })}
         </div>
       </div>
