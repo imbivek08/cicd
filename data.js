@@ -13,7 +13,7 @@ export const project = [
     name: "GameX01",
     photo: "/image.png",
     codeUrl: "https://github.com/imbivek08/gamex01",
-    liveUrl: "#",
+    liveUrl: "https://gamex01.vercel.app/",
     description: "A fun auction-style game where players compete through real-time bidding to build the strongest squad.",
     tech: ["TypeScript", "Express", "PostgreSQL", "Next.js", "Socket.IO"],
   },
