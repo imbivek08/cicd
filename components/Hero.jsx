@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const Hero = () => {
   const [command, setCommand] = useState("");
-  const [output, setOutput] = useState(["devops engineer · cloud enthusiast"]);
+  const [output, setOutput] = useState(["devops engineer · ai enthusiast"]);
 
   const runCommand = (event) => {
     event.preventDefault();
