@@ -22,7 +22,7 @@ const Footer = () => {
             <div className="text-center md:text-left space-y-4">
               <h3 className="text-2xl font-bold text-[#7ee787]">bivek@portfolio</h3>
               <p className="text-gray-400 text-sm leading-relaxed max-w-xs mx-auto md:mx-0">
-                Full-stack developer passionate about creating elegant solutions to complex problems.
+                DevOps engineer focused on cloud infrastructure, automation, and reliable delivery, with full-stack development experience.
               </p>
               <div className="flex gap-3 justify-center md:justify-start">
                 <Link 

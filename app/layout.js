@@ -6,9 +6,9 @@ import Header from "@/components/Header";
 //const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Bivek Yadav | Full-Stack Developer",
+  title: "Bivek Yadav | DevOps Engineer",
   description:
-    "Bivek Yadav is a full-stack developer passionate about building scalable APIs, reliable applications, and elegant solutions to complex problems.",
+    "Bivek Yadav is a DevOps engineer focused on cloud infrastructure, automation, reliable delivery, and full-stack application development.",
   icons: {
     icon: "/fevicon.jpeg",
   },

@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const Hero = () => {
   const [command, setCommand] = useState("");
-  const [output, setOutput] = useState(["fullstack engineer · devops enthusiast"]);
+  const [output, setOutput] = useState(["devops engineer · cloud enthusiast"]);
 
   const runCommand = (event) => {
     event.preventDefault();
@@ -15,7 +15,7 @@ const Hero = () => {
     if (!value) return;
     const responses = {
       help: "available: help, whoami, ls, clear",
-      whoami: "bivek — fullstack engineer · devops enthusiast",
+      whoami: "bivek — devops engineer · cloud enthusiast",
       ls: "about/  projects/  skills/  contact/",
     };
     setOutput((current) => [
@@ -67,15 +67,15 @@ const Hero = () => {
               <span className="gradient-text inline-block">Bivek Yadav</span>
             </h1>
             <h2 className="text-xl sm:text-2xl lg:text-3xl text-[#ffa657] font-light">
-              Fullstack Engineer<span className="terminal-cursor"></span>
+              DevOps Engineer<span className="terminal-cursor"></span>
             </h2>
           </div>
           
           <p className="text-[#8b949e] text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl">
-            Full-stack developer with a strong DevOps skill. I build scalable APIs, 
-            cloud-native systems, and production-ready infrastructure using TypeScript, Go, React, 
-            Docker, Kubernetes, and AWS. I care about clean code, smooth deployments, 
-            and systems that actually work in the real world.
+            DevOps engineer focused on cloud infrastructure, automation, and reliable delivery.
+            I also build full-stack applications using TypeScript, Go, React, Docker, Kubernetes,
+            and AWS. I care about clean code, smooth deployments, and systems that actually work
+            in the real world.
           </p>
           
           <div className="flex flex-wrap gap-4 pt-4">

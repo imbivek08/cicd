@@ -18,7 +18,7 @@ const Projects = () => {
             <span className="gradient-text">Projects</span>
           </h1>
           <p className="text-[#8b949e] text-sm sm:text-base max-w-2xl mx-auto">
-            Here are some of my recent projects showcasing my skills in full-stack development
+            Here are some of my recent projects showcasing my DevOps, cloud, and full-stack development skills
           </p>
         </div>
         
